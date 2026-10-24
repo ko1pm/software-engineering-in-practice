@@ -1,0 +1,3 @@
+git status showed that I was on the main branch and that some directories were untracked.
+git log showed the repository's commit history, including the latest merge commit.
+The new file is untracked because Git has not been told to track it yet.

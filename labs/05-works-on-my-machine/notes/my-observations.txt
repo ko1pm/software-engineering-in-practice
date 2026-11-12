@@ -1,0 +1,50 @@
+i ran python3 main.py then what i got is. My project didn't have that command installed so it gave me an error
+
+Traceback (most recent call last):
+  File "/workspaces/software-engineering-in-practice/labs/05-works-on-my-machine/main.py", line 1, in <module>
+    import cowsay
+ModuleNotFoundError: No module named 'cowsay'
+
+
+i ran cat pyproject.toml
+
+[project]
+name = "lab05-works-on-my-machine"
+version = "0.1.0"
+description = "Lab 05 starter: reproducible environments with uv"
+requires-python = ">=3.13"
+dependencies = [
+    "cowsay>=6,<7",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<9",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+
+Then i ran uv sync, this command let me install 6 python packages
+
+Using CPython 3.13.16 interpreter at: /usr/local/python/current/bin/python3
+Creating virtual environment at: .venv
+Resolved 8 packages in 290ms
+Prepared 6 packages in 127ms
+░░░░░░░░░░░░░░░░░░░░ [0/6] Installing wheels...                                                                                                      warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+         If the cache and target directories are on different filesystems, hardlinking may not be supported.
+         If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+Installed 6 packages in 90ms
+ + cowsay==6.1
+ + iniconfig==2.3.1
+ + packaging==26.3
+ + pluggy==1.7.0
+ + pygments==2.21.0
+ + pytest==8.4.2
+
+
+if another person runs the same command without installing uv sync, he gets the same as i got before running the command 'uv sync'.
+The uv sync command created a virtual environment called .venv, installed the required Python packages and generated uv.lock. 
+This makes the project environment reproducible.
+Devcontainer Features are used to install Python, Go and Java.
